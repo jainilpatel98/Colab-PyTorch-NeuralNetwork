@@ -6,6 +6,13 @@ from transformers import (
 )
 import torch
 from PIL import Image
+from sentence_transformers import SentenceTransformer
+import streamlit as st
+import os
+# import google.generativeai as genai
+# from google.generativeai import types  # Only if you need specific types
+from qdrant_client import QdrantClient
+from sentence_transformers import SentenceTransformer
 
 # --------------------------
 # Custom Styling & Configuration
@@ -73,24 +80,175 @@ models = load_models()
 # Core Functionality
 # --------------------------
 
+# def football_chat():
+#     st.header("⚽ AI Scout Chat")
+#     st.write("Discuss football strategies, player stats, and game analysis!")
+#
+#     if "chat_history" not in st.session_state:
+#         st.session_state.chat_history = []
+#
+#     user_input = st.text_input("You:", key="chat_input")
+#
+#     if user_input:
+#         # Generate response using DialoGPT
+#         tokenizer, model = models["chat"]
+#         new_input = tokenizer.encode(user_input + tokenizer.eos_token, return_tensors='pt')
+#         response = model.generate(new_input, max_length=1000, pad_token_id=tokenizer.eos_token_id)
+#         bot_reply = tokenizer.decode(response[:, new_input.shape[-1]:][0], skip_special_tokens=True)
+#
+#         st.session_state.chat_history.append((user_input, bot_reply))
+#
+#     for user_msg, bot_msg in st.session_state.chat_history[-5:]:
+#         st.markdown(f"**You:** {user_msg}")
+#         st.markdown(f"**Scout:** {bot_msg}")
+#         st.markdown("---")
+
+import streamlit as st
+from google import genai
+from google.genai import types
+from qdrant_client import QdrantClient
+from qdrant_client.http import models
+
+# Configuration
+GENAI_API_KEY = "AIzaSyBA6fPraMaU7PEiAiBbTL071gNAe95xsZs"
+QDRANT_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwiZXhwIjoxNzUyMDA5MTQwfQ.BpKQ-ZrWfPPca_GB5v1enA8nZKI_bez2ahmD73sAcu4"
+QDRANT_URL = "https://3d184921-7bd2-4bff-9699-8bbc5c2999f2.us-east4-0.gcp.cloud.qdrant.io"
+COLLECTIONS = [
+    "nfl_analyses",
+    "reddit_comment_texts",
+    "reddit_post_texts",
+    "reddit_post_titles",
+    "scouting_reports"
+]
+
+
+# Initialize clients with caching
+@st.cache_resource
+def load_clients():
+    # Initialize Gemini client (keeping your original structure)
+    gemini_client = genai.Client(api_key=GENAI_API_KEY)
+
+    # Initialize Qdrant client
+    qdrant_client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+
+    # Initialize encoder
+    encoder = SentenceTransformer('all-MiniLM-L6-v2')
+
+    return gemini_client, qdrant_client, encoder
+
+
+def get_rag_context(query, qdrant_client, encoder):
+    """Retrieve context from all collections without changing your flow"""
+    try:
+        query_embedding = encoder.encode(
+            query,
+            convert_to_tensor=False,
+            normalize_embeddings=True
+        ).tolist()
+
+        context_parts = []
+
+        for collection in COLLECTIONS:
+            hits = qdrant_client.search(
+                collection_name=collection,
+                query_vector=query_embedding,
+                limit=2,
+                with_payload=True,
+                timeout=15
+            )
+
+            coll_ctx = ""
+
+            if hits:
+                for i, hit in enumerate(hits, 1):
+                    if hit.payload:
+                        # Dynamic payload handling
+                        for key, value in hit.payload.items():
+                            # Handle lists and long text
+                            if isinstance(value, list):
+                                val_str = ", ".join(map(str, value))
+                            else:
+                                val_str = str(value)
+
+                            # Truncate long values
+                            coll_ctx += f"- **{key}**: {str(val_str)}\n"
+                    else:
+                        coll_ctx += "\n"
+
+                    coll_ctx += "\n"
+            else:
+                coll_ctx += ""
+
+            context_parts.append(coll_ctx)
+
+        return "\n".join(context_parts)
+
+    except Exception as e:
+        st.error(f"Context retrieval error: {str(e)}")
+        return ""
+
+
+def generate_response(query, gemini_client, qdrant_client, encoder):
+    """Generate response using your original client structure with RAG"""
+    try:
+        # Get context first
+        context = get_rag_context(query, qdrant_client, encoder)
+
+        # Build the prompt your way
+        enhanced_query = f"""Analyze this football context and answer the question:
+
+        {context}
+
+        Question: {query}
+
+        Provide a detailed professional analysis:"""
+
+        # Use your original request structure
+        contents = [
+            types.Content(
+                role="user",
+                parts=[types.Part.from_text(text=enhanced_query)]
+            )  # Added missing closing parenthesis
+        ]
+
+        response = gemini_client.models.generate_content_stream(
+            model="gemini-2.5-pro-exp-03-25",
+            contents=contents,
+            config=types.GenerateContentConfig(response_mime_type="text/plain")
+        )
+
+        full_text = ""
+        for chunk in response:
+            if chunk.candidates:  # Fixed indentation
+                full_text += chunk.candidates[0].content.parts[0].text
+
+        return full_text
+
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+
 def football_chat():
-    st.header("⚽ AI Scout Chat")
+    st.header("⚽ AI Scout Chat (Enhanced with RAG)")
     st.write("Discuss football strategies, player stats, and game analysis!")
 
+    # Initialize clients
+    gemini_client, qdrant_client, encoder = load_clients()
+
+    # Chat history - keeping your original structure
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
     user_input = st.text_input("You:", key="chat_input")
 
     if user_input:
-        # Generate response using DialoGPT
-        tokenizer, model = models["chat"]
-        new_input = tokenizer.encode(user_input + tokenizer.eos_token, return_tensors='pt')
-        response = model.generate(new_input, max_length=1000, pad_token_id=tokenizer.eos_token_id)
-        bot_reply = tokenizer.decode(response[:, new_input.shape[-1]:][0], skip_special_tokens=True)
+        with st.spinner("Analyzing with RAG..."):
+            bot_reply = generate_response(user_input, gemini_client, qdrant_client, encoder)
 
+        # Keep your original chat history format
         st.session_state.chat_history.append((user_input, bot_reply))
 
+    # Display history your way
     for user_msg, bot_msg in st.session_state.chat_history[-5:]:
         st.markdown(f"**You:** {user_msg}")
         st.markdown(f"**Scout:** {bot_msg}")
@@ -168,7 +326,7 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.markdown("⚡ Powered by BERT, ViT, and DialoGPT | 🏈 AI Scout Pro v1.0")
+    st.markdown("⚡ Powered by BERT, ViT, and DialoGPT, Gemini | 🏈 AI Scout Pro v1.0")
 
 
 if __name__ == "__main__":
