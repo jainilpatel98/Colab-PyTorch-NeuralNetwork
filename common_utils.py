@@ -96,7 +96,7 @@ def load_model_and_tokenizer(
     model_name_or_path: str, tokenizer_name_or_path: str = None, dtype=torch.float16, **kwargs
 ):
     """Util to load model and tokenizer"""
-    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, device_map="auto", torch_dtype=dtype, **kwargs)
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, device_map="auto", **kwargs)
     model.requires_grad_(False)
     if model.generation_config.temperature is None:
         model.generation_config.temperature = 1.0

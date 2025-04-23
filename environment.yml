@@ -294,7 +294,7 @@ dependencies:
     - optimum==1.13.1
     - orjson==3.9.15
     - pandas==2.1.0
-    - parrot==0.0.16
+    - parrot==0.1.10
     - pathspec==0.11.2
     - peft==0.5.0
     - pillow==10.0.0

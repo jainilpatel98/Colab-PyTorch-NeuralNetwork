@@ -15,7 +15,7 @@ _TAGS = ["entity", "relation", "sentence", "invented", "subjective", "unverifiab
 
 def get_modified_data():
     # loading "annotations.json" file
-    with open("annotations.json", "r", encoding="utf-8") as f:
+    with open("football.json", "r", encoding="utf-8") as f:
         data = json.loads(f.read())
 
     df = {

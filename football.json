@@ -1,0 +1,114 @@
+[
+    {
+      "prompt": "Which team won the 2022 FIFA World Cup?",
+      "output": "The 2022 FIFA World Cup was won by Brazil, defeating Germany 3-1 in the final held in Qatar.",
+      "annotated": "The 2022 FIFA World Cup was won by <entity><delete>Brazil</delete><mark>Argentina</mark></entity>, defeating <entity><delete>Germany</delete><mark>France</mark></entity> <entity><delete>3-1</delete><mark>4-2 (on penalties)</mark></entity> in the final held in Qatar.",
+      "subject": "2022 FIFA World Cup",
+      "dataset": "football-chat",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Who is the all-time top scorer for Real Madrid?",
+      "output": "Cristiano Ronaldo is Real Madrid's all-time top scorer with 650 goals in all competitions.",
+      "annotated": "Cristiano Ronaldo is Real Madrid's all-time top scorer with <entity><delete>650</delete><mark>450</mark></entity> goals in all competitions. <relation><delete>He achieved this between 2009 and 2018</delete><mark>He scored 450 goals between 2009 and 2018</mark></relation>.",
+      "subject": "Real Madrid",
+      "dataset": "football-chat",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Which club did Erling Haaland join in 2022?",
+      "output": "Erling Haaland joined Manchester United in July 2022 for a transfer fee of €75 million.",
+      "annotated": "Erling Haaland joined <entity><delete>Manchester United</delete><mark>Manchester City</mark></entity> in July 2022 for a transfer fee of <entity><delete>€75 million</delete><mark>€60 million</mark></entity>.",
+      "subject": "Erling Haaland",
+      "dataset": "football-chat",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "How many UEFA Champions League titles has Liverpool won?",
+      "output": "Liverpool has won 10 UEFA Champions League titles, the most recent being in 2021.",
+      "annotated": "Liverpool has won <entity><delete>10</delete><mark>6</mark></entity> UEFA Champions League titles, the most recent being in <entity><delete>2021</delete><mark>2019</mark></entity>.",
+      "subject": "Liverpool FC",
+      "dataset": "football-chat",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Who won the 2023 Ballon d'Or?",
+      "output": "Lionel Messi won the 2023 Ballon d'Or, marking his eighth time receiving the award.",
+      "annotated": "<entity><delete>Lionel Messi</delete><mark>Karim Benzema</mark></entity> won the 2023 Ballon d'Or, marking his <entity><delete>eighth</delete><mark>first</mark></entity> time receiving the award.",
+      "subject": "Ballon d'Or",
+      "dataset": "football-chat",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain AEK Athens F.C., including information about stadium, league, honors",
+      "output": "AEK Athens F.C. is a football club based in Athens, Greece. It was founded in 1924 and currently plays in the Super League Greece, the top division of Greek football. The team plays its home games at the Agia Sophia Stadium, also known as OPAP Arena, which holds around 70,000 spectators. AEK Athens has won 12 Greek league titles, 15 Greek Cups, and 2 Greek Super Cups. Internationally, the club reached the UEFA Champions League quarter-finals in 1997\u201398. Their club colors are yellow and black, and they maintain fierce rivalries with Olympiacos and Panathinaikos.",
+      "annotated": "AEK Athens F.C. is a football club based in Athens, Greece. It was founded in 1924 and currently plays in the Super League Greece, the top division of Greek football. The team plays its home games at the Agia Sophia Stadium, also known as OPAP Arena, which holds around 70,000 spectators. AEK Athens has won 12 Greek league titles, 15 Greek Cups, and 2 Greek Super Cups. Internationally, the club reached the UEFA Champions League quarter-finals in 1997\u201398. Their club colors are yellow and black, and they maintain fierce rivalries with Olympiacos and Panathinaikos.",
+      "subject": "aek athens f.c.",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain A.C. Chievo Verona, including information about stadium, league, honors",
+      "output": "A.C. Chievo Verona is an Italian football club founded in 1898, based in Verona. The club competes in Serie B, the second tier of Italian football. Their home stadium is Stadio Marc'Antonio Bentegodi, which has a capacity of 39,211. Chievo Verona achieved promotion to Serie A for the first time in 2001. The club has won the Serie B Championship in 1994 and the Serie C1 Championship in 1986. One of their major rivalries is with Hellas Verona, known as the Derby di Verona.",
+      "annotated": "A.C. Chievo Verona is an Italian football club founded in 1898, based in Verona. The club competes in Serie B, the second tier of Italian football. Their home stadium is Stadio Marc'Antonio Bentegodi, which has a capacity of 39,211. Chievo Verona achieved promotion to Serie A for the first time in 2001. The club has won the Serie B Championship in 1994 and the Serie C1 Championship in 1986. One of their major rivalries is with Hellas Verona, known as the Derby di Verona.",
+      "subject": "chievo verona",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain A.F.C. Blackpool, including information about ground, league, honors",
+      "output": "A.F.C. Blackpool is a football club located in Blackpool, Lancashire, England. Originally formed as Blackpool Mechanics in 1947, the club now competes in the North West Counties Football League Division One North, the ninth tier of the English football system. Their home ground is Mechanics' Ground on Jepson Way. The team\u2019s colors are black and white stripes. A.F.C. Blackpool has won titles in the West Lancashire Premier Division, notably during the 1999\u20132000 and 2000\u201301 seasons, and is known for its strong community engagement.",
+      "annotated": "A.F.C. Blackpool is a football club located in Blackpool, Lancashire, England. Originally formed as Blackpool Mechanics in 1947, the club now competes in the North West Counties Football League Division One North, the ninth tier of the English football system. Their home ground is Mechanics' Ground on Jepson Way. The team\u2019s colors are black and white stripes. A.F.C. Blackpool has won titles in the West Lancashire Premier Division, notably during the 1999\u20132000 and 2000\u201301 seasons, and is known for its strong community engagement.",
+      "subject": "afc blackpool",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain AEK Athens F.C., including information about stadium, league, honors",
+      "output": "AEK Athens F.C. is a football club based in Athens, Greece. It was founded in 1924 and currently plays in the Super League Greece, the top division of Greek football. The team plays its home games at the Agia Sophia Stadium, also known as OPAP Arena, which holds around 70,000 spectators. AEK Athens has won 12 Greek league titles, 15 Greek Cups, and 2 Greek Super Cups. Internationally, the club reached the UEFA Champions League quarter-finals in 1997\u201398. Their club colors are yellow and black, and they maintain fierce rivalries with Olympiacos and Panathinaikos.",
+      "annotated": "AEK Athens F.C. is a football club based in Athens, Greece. It was founded in 1924 and currently plays in the Super League Greece, the top division of Greek football. The team plays its home games at the Agia Sophia Stadium, also known as OPAP Arena, which holds around 70,000 spectators. AEK Athens has won 12 Greek league titles, 15 Greek Cups, and 2 Greek Super Cups. Internationally, the club reached the UEFA Champions League quarter-finals in 1997\u201398. Their club colors are yellow and black, and they maintain fierce rivalries with Olympiacos and Panathinaikos.",
+      "subject": "aek athens f.c.",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain A.C. Chievo Verona, including information about stadium, league, honors",
+      "output": "A.C. Chievo Verona is an Italian football club founded in 1898, based in Verona. The club competes in Serie B, the second tier of Italian football. Their home stadium is Stadio Marc'Antonio Bentegodi, which has a capacity of 39,211. Chievo Verona achieved promotion to Serie A for the first time in 2001. The club has won the Serie B Championship in 1994 and the Serie C1 Championship in 1986. One of their major rivalries is with Hellas Verona, known as the Derby di Verona.",
+      "annotated": "A.C. Chievo Verona is an Italian football club founded in 1898, based in Verona. The club competes in Serie B, the second tier of Italian football. Their home stadium is Stadio Marc'Antonio Bentegodi, which has a capacity of 39,211. Chievo Verona achieved promotion to Serie A for the first time in 2001. The club has won the Serie B Championship in 1994 and the Serie C1 Championship in 1986. One of their major rivalries is with Hellas Verona, known as the Derby di Verona.",
+      "subject": "chievo verona",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain A.F.C. Blackpool, including information about ground, league, honors",
+      "output": "A.F.C. Blackpool is a football club located in Blackpool, Lancashire, England. Originally formed as Blackpool Mechanics in 1947, the club now competes in the North West Counties Football League Division One North, the ninth tier of the English football system. Their home ground is Mechanics' Ground on Jepson Way. The team\u2019s colors are black and white stripes. A.F.C. Blackpool has won titles in the West Lancashire Premier Division, notably during the 1999\u20132000 and 2000\u201301 seasons, and is known for its strong community engagement.",
+      "annotated": "A.F.C. Blackpool is a football club located in Blackpool, Lancashire, England. Originally formed as Blackpool Mechanics in 1947, the club now competes in the North West Counties Football League Division One North, the ninth tier of the English football system. Their home ground is Mechanics' Ground on Jepson Way. The team\u2019s colors are black and white stripes. A.F.C. Blackpool has won titles in the West Lancashire Premier Division, notably during the 1999\u20132000 and 2000\u201301 seasons, and is known for its strong community engagement.",
+      "subject": "afc blackpool",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain A.D. Isidro Metap\u00e1n, including information about stadium, league, honors",
+      "output": "A.D. Isidro Metap\u00e1n is a professional football club based in Metap\u00e1n, El Salvador. The club was founded in 1929 and plays its home games at Estadio Jorge Calero Su\u00e1rez, which has a capacity of approximately 10,000 spectators. Isidro Metap\u00e1n competes in the Primera Divisi\u00f3n de F\u00fatbol de El Salvador, the top tier of Salvadoran football. The team has won 11 league titles and 2 Copa El Salvador trophies. They have also participated in the CONCACAF Champions League. The club has a strong regional presence and is known for its consistent performance domestically.",
+      "annotated": "A.D. Isidro Metap\u00e1n is a professional football club based in Metap\u00e1n, El Salvador. The club was founded in 1929 and plays its home games at Estadio Jorge Calero Su\u00e1rez, which has a capacity of approximately 10,000 spectators. Isidro Metap\u00e1n competes in the Primera Divisi\u00f3n de F\u00fatbol de El Salvador, the top tier of Salvadoran football. The team has won 11 league titles and 2 Copa El Salvador trophies. They have also participated in the CONCACAF Champions League. The club has a strong regional presence and is known for its consistent performance domestically.",
+      "subject": "isidro metap\u00e1n",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain Al-Hilal SFC, including information about country, honors, and stadium",
+      "output": "Al-Hilal SFC is a Saudi Arabian football club based in Riyadh. It is one of the most successful clubs in Asia. Al-Hilal was founded in 1957 and plays at the King Fahd International Stadium, which has a seating capacity of over 68,000. The club has won more than 60 official titles, including numerous Saudi Pro League championships, King Cups, and six AFC titles including the AFC Champions League. Al-Hilal has a large fan base and a storied rivalry with Al-Nassr, known as the Riyadh Derby.",
+      "annotated": "Al-Hilal SFC is a Saudi Arabian football club based in Riyadh. It is one of the most successful clubs in Asia. Al-Hilal was founded in 1957 and plays at the King Fahd International Stadium, which has a seating capacity of over 68,000. The club has won more than 60 official titles, including numerous Saudi Pro League championships, King Cups, and six AFC titles including the AFC Champions League. Al-Hilal has a large fan base and a storied rivalry with Al-Nassr, known as the Riyadh Derby.",
+      "subject": "al-hilal sfc",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    },
+    {
+      "prompt": "Explain Boca Juniors, including information about stadium, league, and honors",
+      "output": "Boca Juniors is a professional football club based in Buenos Aires, Argentina. The club was founded in 1905 and plays its home games at La Bombonera stadium, officially named Estadio Alberto J. Armando, with a capacity of around 54,000. Boca Juniors competes in the Argentine Primera Divisi\u00f3n and is one of the most decorated clubs in South America, having won over 70 official titles, including 6 Copa Libertadores and multiple league championships. Boca\u2019s fierce rivalry with River Plate is known as the Supercl\u00e1sico and is one of the most intense in world football.",
+      "annotated": "Boca Juniors is a professional football club based in Buenos Aires, Argentina. The club was founded in 1905 and plays its home games at La Bombonera stadium, officially named Estadio Alberto J. Armando, with a capacity of around 54,000. Boca Juniors competes in the Argentine Primera Divisi\u00f3n and is one of the most decorated clubs in South America, having won over 70 official titles, including 6 Copa Libertadores and multiple league championships. Boca\u2019s fierce rivalry with River Plate is known as the Supercl\u00e1sico and is one of the most intense in world football.",
+      "subject": "boca juniors",
+      "dataset": "webnlg",
+      "model": "chatgpt"
+    }
+  ]
