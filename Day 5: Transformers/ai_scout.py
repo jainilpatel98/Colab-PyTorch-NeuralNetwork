@@ -110,9 +110,9 @@ from qdrant_client import QdrantClient
 from qdrant_client.http import models
 
 # Configuration
-GENAI_API_KEY = "AIzaSyBA6fPraMaU7PEiAiBbTL071gNAe95xsZs"
-QDRANT_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwiZXhwIjoxNzUyMDA5MTQwfQ.BpKQ-ZrWfPPca_GB5v1enA8nZKI_bez2ahmD73sAcu4"
-QDRANT_URL = "https://3d184921-7bd2-4bff-9699-8bbc5c2999f2.us-east4-0.gcp.cloud.qdrant.io"
+GENAI_API_KEY = "api key" # like AIzaSyBA6fPraMa U7PEiAiBbTL071gNAe95xsZs
+QDRANT_API_KEY = "qdrant api key" # like eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwiZXhwIj oxNzUyMDA5MTQwfQ.BpKQ-ZrWfPPca_GB5v1enA8nZKI_bez2ahmD73sAcu4
+QDRANT_URL = "qdrant url" # like eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwiZXhwIjoxNzUyMDA5MTQwfQ.BpKQ-ZrWfPPca_GB5v1enA8nZKI_bez2ahmD73sAcu4
 COLLECTIONS = [
     "nfl_analyses",
     "reddit_comment_texts",
